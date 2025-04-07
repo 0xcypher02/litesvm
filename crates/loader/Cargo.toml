@@ -16,6 +16,7 @@ solana-loader-v3-interface = { workspace = true, features = ["bincode"] }
 solana-pubkey.workspace = true
 solana-signer.workspace = true
 solana-transaction.workspace = true
+solana-sdk-ids.workspace = true
 
 [dev-dependencies]
 solana-message.workspace = true

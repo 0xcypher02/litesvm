@@ -30,6 +30,7 @@ use {
     solana_epoch_schedule::EpochSchedule as EpochScheduleOriginal,
     solana_last_restart_slot::LastRestartSlot,
     solana_rent::Rent as RentOriginal,
+    solana_sdk_ids::bpf_loader,
     solana_signature::Signature,
     solana_slot_hashes::SlotHashes,
     solana_slot_history::SlotHistory as SlotHistoryOriginal,
@@ -238,7 +239,7 @@ impl LiteSvm {
     /// Adds am SBF program to the test environment.
     pub fn add_program(&mut self, program_id: Uint8Array, program_bytes: &[u8]) {
         self.0
-            .add_program(convert_pubkey(program_id), program_bytes)
+            .add_program(&bpf_loader::id(), convert_pubkey(program_id), program_bytes)
     }
 
     #[napi(ts_return_type = "TransactionMetadata | FailedTransactionMetadata")]

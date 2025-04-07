@@ -6,6 +6,7 @@ use {
     solana_instruction::{account_meta::AccountMeta, Instruction},
     solana_keypair::Keypair,
     solana_message::Message,
+    solana_sdk_ids::bpf_loader,
     solana_signer::Signer,
     solana_transaction::Transaction,
 };
@@ -23,7 +24,7 @@ fn hello_world_with_store() {
 
     let program_kp = Keypair::new();
     let program_id = program_kp.pubkey();
-    svm.add_program(program_id, program_bytes);
+    svm.add_program(&bpf_loader::id(), program_id, program_bytes);
 
     let instruction = Instruction::new_with_bytes(
         program_id,
